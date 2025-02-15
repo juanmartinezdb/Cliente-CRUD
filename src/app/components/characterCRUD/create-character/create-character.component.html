@@ -1,0 +1,82 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center text-white bg-dark">
+  <div class="position-absolute w-100 h-100" style="background-size: cover; background-position: center; opacity: 0.3;">
+  </div>
+  <div class="position-relative bg-dark bg-opacity-75 p-4 rounded shadow-lg text-center w-100">
+    <form [formGroup]="formu" (submit)="submit()">
+      <h1>Character Creation</h1>
+      <div class="mb-3 d-flex">
+        <label for="name" class="form-label me-3">Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+      </div>
+      @if (formu.get('name')?.touched && formu.get('name')?.invalid) {
+      <p class="text-danger">Introduce a name</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="race" class="form-label me-3">race</label>
+        <input type="text" id="race" class="form-control" formControlName="race">
+      </div>
+      @if (formu.get('race')?.touched && formu.get('race')?.invalid) {
+      <p class="text-danger">Introduce a race</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="class" class="form-label me-3">class</label>
+        <input type="text" id="class" class="form-control" formControlName="class">
+      </div>
+      @if (formu.get('class')?.touched && formu.get('class')?.invalid) {
+      <p class="text-danger">Introduce a class</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="level" class="form-label me-3">level</label>
+        <input type="text" id="level" class="form-control" formControlName="level">
+      </div>
+      @if (formu.get('level')?.touched && formu.get('level')?.invalid) {
+      <p class="text-danger">Introduce a level</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="player" class="form-label me-3">player</label>
+        <input type="text" id="player" class="form-control" formControlName="player">
+      </div>
+      @if (formu.get('player')?.touched && formu.get('player')?.invalid) {
+      <p class="text-danger">Introduce a player</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="experience" class="form-label me-3">experience</label>
+        <input type="text" id="experience" class="form-control" formControlName="experience">
+      </div>
+      @if (formu.get('experience')?.touched && formu.get('experience')?.invalid) {
+      <p class="text-danger">Introduce a experience</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="campaign_id" class="form-label me-3">Campaign:</label>
+        <select name="campaign_id" id="campaign_id" formControlName="campaign_id">
+          @for (camp of campaigns; track $index) {
+            <option value="{{camp.id}}">{{camp.name}}</option>
+          }
+        </select>
+      </div>
+      @if (formu.get('campaign_id')?.touched && formu.get('campaign_id')?.invalid) {
+      <p class="text-danger">Introduce a Campaign</p>
+      }
+
+
+      <div class="mb-3 d-flex">
+        <label for="creation_date" class="form-label me-3">Creation Date</label>
+        <input type="date" id="creation_date" class="form-control" formControlName="creation_date">
+      </div>
+      @if (formu.get('creation_date')?.touched && formu.get('creation_date')?.invalid) {
+      <p class="text-danger">Introduce a creation date</p>
+      }
+      <button type="submit" class="btn btn-primary">Crear</button>
+    </form>
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <a [routerLink]="['/characters']" class="btn btn-secondary">Back</a>
+    </div>
+  </div>
+</div>
+
+@if (!character){
+<div class="alert alert-warning text-center mt-4">
+  <h4>Campaign not found</h4>
+  <a [routerLink]="['/characters']" class="btn btn-primary">Go Back</a>
+</div>
+}

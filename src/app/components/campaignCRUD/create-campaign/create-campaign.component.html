@@ -1,0 +1,71 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center text-white bg-dark">
+  <div class="position-absolute w-100 h-100" style="background-size: cover; background-position: center; opacity: 0.3;"></div>
+
+  <div class="position-relative bg-dark bg-opacity-75 p-4 rounded shadow-lg text-center w-100">
+    <form [formGroup]="formu" (submit)="submit()">
+      <div class="mb-3 d-flex">
+        <label for="name" class="form-label me-3">Campaign Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+      </div>
+      @if (formu.get('name')?.touched && formu.get('name')?.invalid) {
+<p class="text-danger">Introduce a name</p>
+      }
+      <div class="mb-3 d-flex">
+        <label for="system" class="form-label me-3">System:</label>
+        <input type="text" id="system" class="form-control" formControlName="system">
+      </div>
+      @if (formu.get('system')?.touched && formu.get('system')?.invalid) {
+        <p class="text-danger">Introduce a system</p>
+              }
+      <div class="mb-3 d-flex">
+        <label for="start_date" class="form-label me-3">Start Date</label>
+        <input type="date" id="start_date" class="form-control" formControlName="start_date">
+      </div>
+      @if (formu.get('start_date')?.touched && formu.get('start_date')?.invalid) {
+        <p class="text-danger">Introduce a start date</p>
+              }
+      <div class="mb-3 d-flex">
+        <label for="difficulty" class="form-label me-3">Difficulty:</label>
+        <select name="difficulty" id="difficulty" class="form-control" formControlName="difficulty">
+          <option value="1">Very Easy</option>
+          <option value="2">Easy</option>
+          <option value="3">Normal</option>
+          <option value="4">Difficult</option>
+          <option value="5">Very Difficult</option>
+        </select>
+      </div>
+           @if (formu.get('difficulty')?.touched && formu.get('difficulty')?.invalid) {
+        <p class="text-danger">Introduce a difficulty</p>
+              }
+
+      <div class="mb-3 d-flex">
+        <label for="active" class="form-label me-3">Active: </label>
+        <input type="checkbox" id="active" class="" formControlName="active">
+      </div>
+
+      <!-- //PLAYERS -->
+      <div class="mb-3 d-flex">
+          <a class="btn btn-primary" [routerLink]="['/characters/editByCamp/'+campaign?.id]">Add players</a>
+      </div>
+      <div class="mb-3 d-flex">
+        <label for="description" class="form-label me-3">Description</label>
+        <textarea id="description" class="form-control" formControlName="description"></textarea>
+      </div>
+      @if (formu.get('description')?.touched && formu.get('description')?.invalid) {
+        <p class="text-danger">Introduce a description</p>
+              }
+
+              <button type="submit" class="btn btn-primary">Crear</button>
+            </form>
+              <div class="d-flex justify-content-center gap-2 mt-3">
+      <a [routerLink]="['/campaigns']" class="btn btn-secondary">Back</a>
+    </div>
+  </div>
+</div>
+
+@if (!campaign){
+  <div class="alert alert-warning text-center mt-4">
+    <h4>Campaign not found</h4>
+    <a [routerLink]="['/campaigns']" class="btn btn-primary">Go Back</a>
+  </div>
+}

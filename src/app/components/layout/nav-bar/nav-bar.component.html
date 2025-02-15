@@ -1,0 +1,23 @@
+<nav class="navbar navbar-light bg-white shadow-sm px-4 d-flex align-items-center justify-content-between">
+  <!-- Logo y Home -->
+  <a class="d-flex align-items-center text-decoration-none text-dark" [routerLink]="['/']">
+    <img src="/favicon.png" alt="Home" class="me-2" style="height: 32px;"> Home
+  </a>
+
+  <!-- Contenedor de links -->
+  <div class="d-flex gap-4">
+    <!-- Campaigns -->
+    <div class="d-flex align-items-center gap-2">
+      <span>Campaigns</span>
+      <a class="btn btn-outline-secondary" [routerLink]="['/campaigns']"><i class="bi bi-list-ul"></i></a>
+      <a class="btn btn-primary" [routerLink]="['/campaigns/new']"><i class="bi bi-plus-circle"></i></a>
+    </div>
+
+    <!-- Characters -->
+    <div class="d-flex align-items-center gap-2">
+      <span>Characters</span>
+      <a class="btn btn-outline-secondary" [routerLink]="['/characters']"><i class="bi bi-list-ul"></i></a>
+      <a class="btn btn-outline-primary" [routerLink]="['/characters/new']"><i class="bi bi-plus-circle"></i></a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,11 @@
+
+  <div class="vh-100 d-flex">
+  @for (camp of campaigns; track $index) {
+
+<a class="d-flex align-items-center justify-content-center text-white text-decoration-none"
+[routerLink]="['/campaigns/', camp.id]"
+[style.background]="'url(/'+ camp.id +'.jpg) center/cover no-repeat'">
+<h1 class="m-5 text-center">{{camp.name}}</h1>
+</a>
+}
+</div>
