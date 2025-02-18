@@ -5,11 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class CookiesHandlerService {
 
-  set(nombre: string, valor: string | any[], dias: number = 7): void {
+  set(nombre: string, valor: string | any[], dias?: number): void {
     const finalValue = Array.isArray(valor) ? JSON.stringify(valor) : valor;
-    const expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + dias);
-    document.cookie = `${nombre}=${encodeURIComponent(finalValue)}; expires=${expirationDate.toUTCString()}; path=/`;
+    let cookieString = `${nombre}=${encodeURIComponent(finalValue)}; path=/`;
+
+
+    if (dias !== undefined && dias > 0) {
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + dias);
+      cookieString += `; expires=${expirationDate.toUTCString()}`;
+    }
+
+    document.cookie = cookieString;
   }
 
   get(nombre: string): string | null {
@@ -33,7 +40,7 @@ export class CookiesHandlerService {
         this.set(nombre, array);
       }
     } catch (e) {
-      console.error(`Could not remove the element from cookie ${nombre}:`, e);
+      console.error(`No se puede eliminar el elemento de la cookieee ${nombre}:`, e);
     }
   }
 }

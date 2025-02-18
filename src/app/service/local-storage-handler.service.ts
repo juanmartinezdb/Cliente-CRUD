@@ -27,4 +27,5 @@ export class LocalStorageHandlerService {
     const data = this.get<T[]>(key, []).filter(i => JSON.stringify(i) !== JSON.stringify(item));
     this.set(key, data);
   }
+
 }
