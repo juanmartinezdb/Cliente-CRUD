@@ -26,6 +26,8 @@ constructor () {
     active: true,
     characters_ids: [],
     difficulty: 1,
+    latitude: 0,
+    longitude: 0
   };
 }
 ngOnInit(): void {

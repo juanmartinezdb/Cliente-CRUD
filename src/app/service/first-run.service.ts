@@ -22,6 +22,8 @@ if(!iniciado){
       localStorage.setItem('campaigns', JSON.stringify(data.campaigns));
       localStorage.setItem('characters', JSON.stringify(data.characters));
       localStorage.setItem('ini', 'true');
+      console.log(data);
+
     },
     error: (err) => {
       console.error("Error al cargar el JSON inicial", err);

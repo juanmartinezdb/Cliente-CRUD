@@ -11,6 +11,7 @@ import { EditCampaignComponent } from './components/campaignCRUD/edit-campaign/e
 
 export const routes: Routes = [
   {path:"", component: StartComponent },
+  
   //campaings routes
   {path:"campaigns", component: CampaignComponent },
   {path:"campaigns/new", component: CreateCampaignComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
 
   //character Routes
   {path:"characters", component: CharacterComponent },
+  {path:"characters/:filter", component: CharacterComponent },
   {path:"characters/new", component: CreateCharacterComponent },
   {path:"characters/edit/:id", component: EditCharacterComponent},
   {path:"characters/:id", component: DetailsCharacterComponent}

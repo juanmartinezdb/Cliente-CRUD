@@ -7,5 +7,6 @@ export interface Campaign {
   active: boolean;
   difficulty: number;
   characters_ids: number [];
-
+  latitude: number;
+  longitude: number;
 }

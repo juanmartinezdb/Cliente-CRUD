@@ -1,3 +1,12 @@
+<div>
+  <label for="filter">Filter by Campaign:</label>
+  <select name="filter" id="filter">
+    @for (campaign of campaigns; track $index) {
+      <option value="{{campaign.id}}">{{campaign.name}}</option>
+    }
+  </select>
+</div>
+
 <div class="container-fluid d-flex align-items-center justify-content-center">
   <div class="d-flex overflow-auto gap-4 character-container flex-wrap justify-content-center align-items-start">
     @for (char of characters; track $index) {
