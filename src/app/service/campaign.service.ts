@@ -33,7 +33,7 @@ add(value: Campaign) {
 
   })
 }
-remove(id: number) {
+remove(id: String) {
   this.http.delete(`${this.url}/${id}`).subscribe({
     next: () => {
       console.log(`Campaign with ID ${id} deleted`);
@@ -53,13 +53,8 @@ update(value: Campaign){
   });
 }
 
-campaingById(id: number): Campaign {
-  let campaign = null;
-  this.campaigns$.subscribe( campaigns => {
-    campaign = campaigns.find(c=> c.id==id);
-  })
-  return campaign!;
+campaingById(value: number) {
+return this.campaingsSubject.getValue().find(c=> c.id==value);
 }
-
 
 }

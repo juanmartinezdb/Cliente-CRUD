@@ -35,8 +35,19 @@ loadCharacters(): void {
 }
 
   deleteCampaign(): void {
+    if(this.characters.length>0){
+      if(confirm("Esta campaña tiene personajes, quieres moverlos a 'sin asignar' antes de borrar?")){
+        this.charService.moveCharactersToUnassignedCampaign(this.campaign?.id!);
+        } else {
+          this.characters.forEach( c => this.charService.remove(c.id));
+        }
+    }
       this.campService.remove(this.campaign!.id);
       this.router.navigate(['/campaigns']);
   }
+//   deleteCampaign(): void {
+//     this.campService.remove(this.campaign!.id);
+//     this.router.navigate(['/campaigns']);
+// }
 
 }
