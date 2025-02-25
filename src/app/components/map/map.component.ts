@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
@@ -6,7 +6,7 @@ import * as L from 'leaflet';
   template: '<div id="map"></div>',
   styleUrls: ['./map.component.css'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements AfterViewInit {
   @Input() latitude: number = 36.69569507643647;
   @Input() longitude: number = -4.457026720046998;
   @Input() isEditable: boolean = false;
@@ -16,16 +16,17 @@ export class MapComponent implements OnInit {
   private map!: L.Map;
   private marker!: L.Marker;
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.initMap();
   }
 
   private initMap(): void {
     this.map = L.map('map').setView([this.latitude, this.longitude], 15);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(this.map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(this.map);
 
     const icon = L.icon({
       iconUrl: '/marker2.png',
@@ -37,19 +38,9 @@ export class MapComponent implements OnInit {
       popupAnchor: [14, -76]
     });
 
-    this.marker = L.marker([this.latitude, this.longitude], {
-      icon,
-      draggable: this.isEditable
-    }).addTo(this.map)
-      .bindPopup('Players are reunited here')
-      .openPopup();
+    this.marker = L.marker([this.latitude, this.longitude], {icon}).addTo(this.map).bindPopup('Players are reunited here');
 
     if (this.isEditable) {
-      this.marker.on('dragend', () => {
-        const position = this.marker.getLatLng();
-        this.locationChanged.emit({ latitude: position.lat, longitude: position.lng });
-      });
-
       this.map.on('click', (event: L.LeafletMouseEvent) => {
         this.marker.setLatLng(event.latlng);
         this.locationChanged.emit({ latitude: event.latlng.lat, longitude: event.latlng.lng });
