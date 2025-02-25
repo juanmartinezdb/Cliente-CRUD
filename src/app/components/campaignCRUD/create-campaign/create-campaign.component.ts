@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { Campaign } from '../../../model/campaign';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CampaignService } from '../../../service/campaign.service';
+import { MapComponent } from '../../map/map.component';
 
 @Component({
   selector: 'app-create-campaign',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, MapComponent],
   templateUrl: './create-campaign.component.html'
 })
 export class CreateCampaignComponent implements OnInit {
@@ -27,7 +28,8 @@ constructor () {
     characters_ids: [],
     difficulty: 1,
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    place: ""
   };
 }
 ngOnInit(): void {
@@ -37,13 +39,20 @@ ngOnInit(): void {
      description: ['',[Validators.required]],
      start_date: ['',[Validators.required]],
      active: ['',[]],
-     difficulty: ['',[Validators.required]]
+     difficulty: ['',[Validators.required]],
+     place: '',
+     latitude: [36.7213, [Validators.required]],  
+     longitude: [-4.4213, [Validators.required]]
    });
 
    this.campService.campaigns$.subscribe(campaigns => {
     this.maxID = (campaigns.length>0)? Math.max(...campaigns.map(c=> c.id)) : 0;
    })
 }
+updateLocation(event: { latitude: number; longitude: number }) {
+  this.formu.patchValue({ latitude: event.latitude, longitude: event.longitude });
+}
+
 
 submit(){
   if (this.formu.valid){

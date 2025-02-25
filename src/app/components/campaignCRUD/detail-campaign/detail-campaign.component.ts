@@ -4,10 +4,11 @@ import { CampaignService } from '../../../service/campaign.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Character } from '../../../model/character';
 import { CharacterService } from '../../../service/character.service';
+import { MapComponent } from '../../map/map.component';
 
 @Component({
   selector: 'app-detail-campaign',
-  imports: [RouterLink],
+  imports: [RouterLink, MapComponent],
   templateUrl: './detail-campaign.component.html'
 })
 export class DetailCampaignComponent implements OnInit {
@@ -45,9 +46,5 @@ loadCharacters(): void {
       this.campService.remove((this.campaign?.id)!.toString());
       this.router.navigate(['/campaigns']);
   }
-//   deleteCampaign(): void {
-//     this.campService.remove(this.campaign!.id);
-//     this.router.navigate(['/campaigns']);
-// }
 
 }

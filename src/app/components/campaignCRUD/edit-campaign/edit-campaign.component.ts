@@ -5,10 +5,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CharacterService } from '../../../service/character.service';
 import { Character } from '../../../model/character';
+import { MapComponent } from '../../map/map.component';
 
 @Component({
   selector: 'app-edit-campaign',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, MapComponent],
   templateUrl: './edit-campaign.component.html'
 })
 export class EditCampaignComponent implements OnInit {
@@ -38,10 +39,18 @@ ngOnInit(): void {
     description: [this.campaign?.description,[Validators.required]],
     start_date: [this.campaign?.start_date,[Validators.required]],
     active: [this.campaign?.active,[]],
-    difficulty: [this.campaign?.difficulty,[Validators.required]]
+    difficulty: [this.campaign?.difficulty,[Validators.required]],
+    place: [this.campaign?.place],
+    latitude: [this.campaign?.latitude, [Validators.required]],
+    longitude: [this.campaign?.longitude, [Validators.required]]
   });
 
 }
+updateLocation(event: { latitude: number; longitude: number }) {
+  this.formu.patchValue({ latitude: event.latitude, longitude: event.longitude });
+}
+
+
 submit(){
 if (this.formu.valid){
   this.campaign!.name= this.formu.value.name;
@@ -50,6 +59,9 @@ if (this.formu.valid){
   this.campaign!.start_date= this.formu.value.start_date;
   this.campaign!.active= Boolean(this.formu.value.active);
   this.campaign!.difficulty= this.formu.value.difficulty;
+  this.campaign!.place= this.formu.value.place;
+  this.campaign!.latitude=this.formu.value.latitude;
+  this.campaign!.longitude= this.formu.value.longitude;
 
     this.campService.update(this.campaign!);
 } else {

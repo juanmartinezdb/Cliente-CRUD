@@ -19,6 +19,12 @@
           </li>
         }
       </ul>
+      <p><strong>Place:</strong> {{ campaign.place }}</p>
+      <app-map
+  [latitude]="campaign.latitude"
+  [longitude]="campaign.longitude"
+  [isEditable]="false">
+</app-map>
 
       <div class="d-flex justify-content-center gap-2 mt-3">
         <a [routerLink]="['/campaigns/edit', campaign.id]" class="btn btn-warning">Edit</a>

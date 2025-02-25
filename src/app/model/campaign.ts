@@ -9,4 +9,5 @@ export interface Campaign {
   characters_ids: number [];
   latitude: number;
   longitude: number;
+  place: string;
 }

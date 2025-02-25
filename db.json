@@ -8,7 +8,9 @@
       "start_date": "2023-01-15",
       "active": true,
       "difficulty": 4,
-      "image": "https://example.com/images/curse_of_strahd.jpg",
+      "latitude": 36.69569937773692,
+      "longitude": -4.457107186317445,
+      "place": "Ies Belen",
       "character_ids": [
         101,
         102,
@@ -23,7 +25,9 @@
       "start_date": "2023-03-05",
       "active": false,
       "difficulty": 3,
-      "image": "https://example.com/images/shadows_over_waterdeep.jpg",
+      "latitude": 36.72684308353873,
+      "longitude": -4.474938511848451,
+      "place": "Caja Blanca",
       "character_ids": [
         201,
         202,
@@ -38,7 +42,9 @@
       "start_date": "2022-11-01",
       "active": true,
       "difficulty": 2,
-      "image": "https://example.com/images/fragments_of_destiny.jpg",
+      "latitude": 36.66577098603773,
+      "longitude": -4.5012710988521585,
+      "place": "Biblioteca José Moreno Villa",
       "character_ids": [
         301,
         302,
@@ -133,7 +139,7 @@
     },
     {
       "id": "302",
-      "name": "Lilith Shadowveil",
+      "name": "Lilith Shadowveili",
       "race": "Tiefling",
       "class": "Witch",
       "level": 5,
@@ -141,7 +147,7 @@
       "creation_date": "2022-11-06",
       "experience": 650.3,
       "image": "https://example.com/images/lilith_shadowveil.jpg",
-      "campaign_id": "2"
+      "campaign_id": "1"
     },
     {
       "id": "303",

@@ -54,6 +54,15 @@
       @if (formu.get('description')?.touched && formu.get('description')?.invalid) {
         <p class="text-danger">Introduce a description</p>
               }
+              <label for="place">Place:</label>
+              <input type="text" id="place" class="form-control" formControlName="place">
+
+              <app-map
+                [latitude]="formu.value.latitude"
+                [longitude]="formu.value.longitude"
+                [isEditable]="true"
+                (locationChanged)="updateLocation($event)">
+              </app-map>
 
               <button type="submit" class="btn btn-primary">Crear</button>
             </form>
