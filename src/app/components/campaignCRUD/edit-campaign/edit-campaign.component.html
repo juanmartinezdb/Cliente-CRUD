@@ -42,9 +42,11 @@
         <label for="active" class="form-label me-3">Active: </label>
         <input type="checkbox" id="active" class="" formControlName="active">
       </div>
-      <div class="mb-3 d-flex">
-          <a class="btn btn-primary" [routerLink]="['/characters/editByCamp/'+campaign?.id]">Edit players</a>
-      </div>
+        @for (char of characters; track $index) {
+          <li class="my-1">
+            <a [routerLink]="['/characters/edit/', char.id]" class="text-warning fw-bold text-decoration-none">Edit {{ char.name }}</a>
+          </li>
+        }
       <div class="mb-3 d-flex">
         <label for="description" class="form-label me-3">Description</label>
         <textarea id="description" class="form-control" formControlName="description"></textarea>

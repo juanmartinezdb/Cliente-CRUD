@@ -3,6 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CampaignService } from '../../../service/campaign.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CharacterService } from '../../../service/character.service';
+import { Character } from '../../../model/character';
 
 @Component({
   selector: 'app-edit-campaign',
@@ -11,9 +13,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class EditCampaignComponent implements OnInit {
 campService = inject(CampaignService);
+charService = inject(CharacterService);
 route = inject(ActivatedRoute);
 fb = inject(FormBuilder);
 campaign: Campaign| null = null;
+characters: Character[] = [];
 formu!: FormGroup;
 
 constructor(){
@@ -25,7 +29,9 @@ ngOnInit(): void {
   const id = Number(this.route.snapshot.paramMap.get('id'));
   this.campService.campaigns$.subscribe( campaigns=> {
     this.campaign = campaigns.find(c => id==c.id)||null;
-  })
+  });
+
+  this.characters = this.charService.getCharByCampaignId(this.campaign?.id!);
   this.formu = this.fb.group({
     name: [this.campaign?.name,[Validators.required]],
     system: [this.campaign?.system,[Validators.required]],

@@ -69,7 +69,8 @@
       <button type="submit" class="btn btn-warning">Update</button>
     </form>
     <div class="d-flex justify-content-center gap-2 mt-3">
-      <a [routerLink]="['/characters']" class="btn btn-secondary">Back</a>
+      <a [routerLink]="['/characters']" class="btn btn-primary">Characters</a>
+      <a [routerLink]="['/campaigns/',character?.campaign_id]" class="btn btn-primary">Campaign</a>
     </div>
   </div>
 </div>
@@ -77,6 +78,6 @@
 @if (!character){
 <div class="alert alert-warning text-center mt-4">
   <h4>Campaign not found</h4>
-  <a [routerLink]="['/campaigns']" class="btn btn-primary">Go Back</a>
+  <a [routerLink]="['/characters']" class="btn btn-primary">Characters</a>
 </div>
 }

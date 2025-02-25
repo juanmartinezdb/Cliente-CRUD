@@ -23,8 +23,7 @@ ngOnInit(): void {
   const id = Number(this.ruta.snapshot.paramMap.get('id'));
 
   this.campService.campaigns$.subscribe(campaigns => {
-    this.campaign = campaigns.find(c => c.id === id) || null;
-
+    this.campaign = campaigns.find(c => c.id == id) || null;
       this.loadCharacters();
   });
 }
