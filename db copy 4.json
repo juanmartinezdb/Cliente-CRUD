@@ -1,0 +1,159 @@
+{
+  "campaigns": [
+    {
+      "id": 1,
+      "name": "Curse of Strahd",
+      "system": "D&D 5e",
+      "description": "A gothic adventure in Barovia, where darkness lurks in every corner.",
+      "start_date": "2023-01-15",
+      "active": true,
+      "difficulty": 4,
+      "image": "https://example.com/images/curse_of_strahd.jpg",
+      "character_ids": [
+        101,
+        102,
+        103
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Shadows over Waterdeep",
+      "system": "D&D 5e",
+      "description": "Intrigue and mystery in the great city, where every street hides secrets.",
+      "start_date": "2023-03-05",
+      "active": false,
+      "difficulty": 3,
+      "image": "https://example.com/images/shadows_over_waterdeep.jpg",
+      "character_ids": [
+        201,
+        202,
+        203
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Fragments of Destiny",
+      "system": "Pathfinder",
+      "description": "Heroes seek fragments of a legendary artifact that will change their world.",
+      "start_date": "2022-11-01",
+      "active": true,
+      "difficulty": 2,
+      "image": "https://example.com/images/fragments_of_destiny.jpg",
+      "character_ids": [
+        301,
+        302,
+        303
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": 101,
+      "name": "Eldrin Moonshadow",
+      "race": "Elf",
+      "class": "Wizard",
+      "level": 7,
+      "player": "Juan",
+      "creation_date": "2023-01-20",
+      "experience": 1543.75,
+      "image": "https://example.com/images/eldrin_moonshadow.jpg",
+      "campaign_id": 1
+    },
+    {
+      "id": 102,
+      "name": "Durnan Ironfist",
+      "race": "Dwarf",
+      "class": "Fighter",
+      "level": 6,
+      "player": "Fran",
+      "creation_date": "2023-01-21",
+      "experience": 1320.0,
+      "image": "https://example.com/images/durnan_ironfist.jpg",
+      "campaign_id": 1
+    },
+    {
+      "id": 103,
+      "name": "Lyra Silverwind",
+      "race": "Human",
+      "class": "Sorcerer",
+      "level": 5,
+      "player": "Ana",
+      "creation_date": "2023-01-22",
+      "experience": 980.5,
+      "image": "https://example.com/images/lyra_silverwind.jpg",
+      "campaign_id": 1
+    },
+    {
+      "id": 201,
+      "name": "Sylvara Nightbreeze",
+      "race": "Halfling",
+      "class": "Rogue",
+      "level": 5,
+      "player": "Lucia",
+      "creation_date": "2023-03-10",
+      "experience": 800.0,
+      "image": "https://example.com/images/sylvara_nightbreeze.jpg",
+      "campaign_id": 2
+    },
+    {
+      "id": 202,
+      "name": "Thalric Stormborn",
+      "race": "Human",
+      "class": "Paladin",
+      "level": 5,
+      "player": "Carlos",
+      "creation_date": "2023-03-11",
+      "experience": 850.5,
+      "image": "https://example.com/images/thalric_stormborn.jpg",
+      "campaign_id": 2
+    },
+    {
+      "id": 203,
+      "name": "Ragnar Blackmane",
+      "race": "Orc",
+      "class": "Barbarian",
+      "level": 6,
+      "player": "Marcos",
+      "creation_date": "2023-03-12",
+      "experience": 1100.0,
+      "image": "https://example.com/images/ragnar_blackmane.jpg",
+      "campaign_id": 2
+    },
+    {
+      "id": 301,
+      "name": "Kael Voss",
+      "race": "Human",
+      "class": "Ranger",
+      "level": 4,
+      "player": "Mario",
+      "creation_date": "2022-11-05",
+      "experience": 500.0,
+      "image": "https://example.com/images/kael_voss.jpg",
+      "campaign_id": 3
+    },
+    {
+      "id": 302,
+      "name": "Lilith Shadowveil",
+      "race": "Tiefling",
+      "class": "Witch",
+      "level": 5,
+      "player": "Clara",
+      "creation_date": "2022-11-06",
+      "experience": 650.3,
+      "image": "https://example.com/images/lilith_shadowveil.jpg",
+      "campaign_id": 3
+    },
+    {
+      "id": 303,
+      "name": "Orin Emberfall",
+      "race": "Elf",
+      "class": "Fighter",
+      "level": 4,
+      "player": "David",
+      "creation_date": "2022-11-07",
+      "experience": 560.5,
+      "image": "https://example.com/images/orin_emberfall.jpg",
+      "campaign_id": 3
+    }
+  ]
+}
