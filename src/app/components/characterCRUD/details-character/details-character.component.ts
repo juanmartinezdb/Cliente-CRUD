@@ -21,12 +21,14 @@ private ruta = inject(ActivatedRoute);
 ngOnInit(): void {
     const id = Number(this.ruta.snapshot.paramMap.get('id'));
     this.charService.characters$.subscribe(characters => {
+
       this.character = characters.find(c=> c.id==id)|| null;
+      console.log("id pasada:",id, "personaje:", this.character?.id, this.character?.name);
     });
     if (this.character){
       this.campaign = this.campService.campaingById(this.character.campaign_id) || null;
     }
-}
+  }
 
 deleteCharacter() {
 

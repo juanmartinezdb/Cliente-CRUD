@@ -54,7 +54,7 @@ update(value: Campaign){
 }
 
 campaingById(id: number): Campaign | undefined {
-  return this.campaingsSubject.getValue().find(c => c.id === id);
+  return this.campaingsSubject.getValue().find(c => c.id == id);
 }
 
 

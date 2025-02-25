@@ -24,7 +24,7 @@ private router = inject(Router);
 ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.charService.characters$.subscribe( characters => {
-      this.character = characters.find(c=> c.id= id)||null;
+      this.character = characters.find(c=> c.id== id)||null;
     })
     this.campService.campaigns$.subscribe(c => this.campaigns = c);
 // console.log(this.campaigns);
