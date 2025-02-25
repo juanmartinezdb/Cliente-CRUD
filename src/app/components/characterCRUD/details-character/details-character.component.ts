@@ -24,7 +24,7 @@ ngOnInit(): void {
       this.character = characters.find(c=> c.id==id)|| null;
     });
     if (this.character){
-      this.campaign = this.campService.campaingById(this.character.campaign_id);
+      this.campaign = this.campService.campaingById(this.character.campaign_id) || null;
     }
 }
 

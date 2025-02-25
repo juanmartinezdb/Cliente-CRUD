@@ -42,7 +42,7 @@ loadCharacters(): void {
           this.characters.forEach( c => this.charService.remove(c.id));
         }
     }
-      this.campService.remove(this.campaign!.id);
+      this.campService.remove((this.campaign?.id)!.toString());
       this.router.navigate(['/campaigns']);
   }
 //   deleteCampaign(): void {

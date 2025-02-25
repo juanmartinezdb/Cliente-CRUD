@@ -18,7 +18,9 @@
         <div>
           <h3 class="text-center">{{ char.name }}</h3>
           <p></p>
-          <h4 class="text-center">{{(this.campService.campaingById(char.campaign_id)!.name)}}</h4>
+          <h4 class="text-center">
+            {{ campService.campaingById(char.campaign_id)?.name || 'Unassigned' }}
+          </h4>
         </div>
       </a>
     }

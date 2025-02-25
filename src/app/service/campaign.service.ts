@@ -53,8 +53,10 @@ update(value: Campaign){
   });
 }
 
-campaingById(value: number) {
-return this.campaingsSubject.getValue().find(c=> c.id==value);
+campaingById(id: number): Campaign | undefined {
+  return this.campaingsSubject.getValue().find(c => c.id === id);
 }
+
+
 
 }

@@ -1,8 +1,23 @@
 {
   "campaigns": [
     {
+      "id": "1",
+      "name": "Curse of Strahdp",
+      "system": "D&D 5e",
+      "description": "A gothic adventure in Barovia, where darkness lurks in every corner.",
+      "start_date": "2023-01-15",
+      "active": true,
+      "difficulty": 4,
+      "image": "https://example.com/images/curse_of_strahd.jpg",
+      "character_ids": [
+        101,
+        102,
+        103
+      ]
+    },
+    {
       "id": "2",
-      "name": "Shadows over Waterdeep",
+      "name": "Shadows over Waterdeepo",
       "system": "D&D 5e",
       "description": "Intrigue and mystery in the great city, where every street hides secrets.",
       "start_date": "2023-03-05",
@@ -34,7 +49,7 @@
   "characters": [
     {
       "id": "101",
-      "name": "Eldrino Moonshadow",
+      "name": "Eldrin Moonshadow",
       "race": "Elf",
       "class": "Wizard",
       "level": 7,
@@ -42,7 +57,7 @@
       "creation_date": "2023-01-20",
       "experience": 1543.75,
       "image": "https://example.com/images/eldrin_moonshadow.jpg",
-      "campaign_id": -1
+      "campaign_id": 1
     },
     {
       "id": "102",
@@ -54,7 +69,7 @@
       "creation_date": "2023-01-21",
       "experience": 1320,
       "image": "https://example.com/images/durnan_ironfist.jpg",
-      "campaign_id": -1
+      "campaign_id": 1
     },
     {
       "id": "103",
@@ -66,19 +81,19 @@
       "creation_date": "2023-01-22",
       "experience": 980.5,
       "image": "https://example.com/images/lyra_silverwind.jpg",
-      "campaign_id": -1
+      "campaign_id": 1
     },
     {
       "id": "201",
-      "name": "Sylvara Nightbreeze",
-      "race": "Halfling",
-      "class": "Rogue",
-      "level": 5,
-      "player": "Lucia",
-      "creation_date": "2023-03-10",
-      "experience": 800,
-      "image": "https://example.com/images/sylvara_nightbreeze.jpg",
-      "campaign_id": 2
+      "name": "Eldrin Moon",
+      "race": "Elf",
+      "class": "Wizard",
+      "level": 7,
+      "player": "Juan",
+      "creation_date": "2023-01-20",
+      "experience": 1543.75,
+      "image": "https://example.com/images/eldrin_moonshadow.jpg",
+      "campaign_id": 1
     },
     {
       "id": "202",
@@ -118,15 +133,15 @@
     },
     {
       "id": "302",
-      "name": "Lilith Shadowveil",
-      "race": "Tiefling",
-      "class": "Witch",
-      "level": 5,
-      "player": "Clara",
-      "creation_date": "2022-11-06",
-      "experience": 650.3,
-      "image": "https://example.com/images/lilith_shadowveil.jpg",
-      "campaign_id": 3
+      "name": "Eldrin Moonshadowo",
+      "race": "Elf",
+      "class": "Wizard",
+      "level": 7,
+      "player": "Juan",
+      "creation_date": "2023-01-20",
+      "experience": 1543.75,
+      "image": "https://example.com/images/eldrin_moonshadow.jpg",
+      "campaign_id": 1
     },
     {
       "id": "303",
