@@ -1,45 +1,69 @@
 import { inject, Injectable } from '@angular/core';
-import { LocalStorageHandlerService } from './local-storage-handler.service';
 import { BehaviorSubject } from 'rxjs';
 import { Character } from '../model/character';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
-  //Servicios
-  local: LocalStorageHandlerService = inject(LocalStorageHandlerService);
+   http = inject(HttpClient);
+  characterSubject = new BehaviorSubject<Character[]>([]);
+  characters$ = this.characterSubject.asObservable();
+  url = 'http://localhost:3000/characters';
 
-//Observables
-private charactersSubject = new BehaviorSubject<Character[]>(this.local.get('characters', []));
-characters$ = this.charactersSubject.asObservable();
-
-constructor() {
+    constructor() {
   this.load();
- }
+    }
 
-load() {
-  const value = this.local.get('characters', []);
-  this.charactersSubject.next(value);
-}
-add(value: Character) {
-  const newArray = [...this.charactersSubject.getValue(), value];
-  this.local.set('characters', newArray);
-  this.charactersSubject.next(newArray);
-}
+  load() {
+  this.http.get<Character[]>(this.url).subscribe({
+    next: (data) => this.characterSubject.next(data),
+    error: err => console.log("Error loading character", err)
+  })
+  }
 
-remove(value: Character){
-  this.local.remove('characters', value);
-  this.load();
-}
+  add(value: Character) {
+    this.http.post(this.url, value).subscribe({
+      next: () => {
+        console.log("Character added succesfully");
+        this.load();
+      },
+      error: (err) => console.error("Error adding character", err)
 
-update(value: Character){
-const array = this.charactersSubject.getValue().map(c=> (c.id==value.id)?value:c);
-this.local.set('characters', array);
-this.charactersSubject.next(array);
+    })
+  }
+  remove(id: number) {
+    this.http.delete(`${this.url}/${id}`).subscribe({
+      next: () => {
+        console.log(`Character with ID ${id} deleted`);
+        this.load();
+      },
+      error: err => console.error("Error deleting character:", err)
+    });
+  }
+
+  update(value: Character){
+    this.http.put(`${this.url}/${value.id}`, value).subscribe({
+      next: () => {
+        console.log(`Character with ID ${value.id} updated OK`);
+        this.load();
+      },
+      error: (err) => console.error(`Error updating the character with ID ${value.id}:`, err)
+    });
+  }
+
+  moveCharactersToUnassignedCampaign(campaignId: number) {
+let chars = this.getCharByCampaignId(campaignId);
+for (let char of chars){
+char.campaign_id=-1;
+this.update(char)
 }
+this.load();
+  }
+
 
 getCharByCampaignId(value: number){
-  return this.charactersSubject.getValue().filter(c=> c.campaign_id==value);
+  return this.characterSubject.getValue().filter(c=> c.campaign_id==value);
 }
 }

@@ -29,7 +29,9 @@ ngOnInit(): void {
 }
 
 deleteCharacter() {
-  this.charService.remove(this.character!);
+
+    this.charService.remove(this.character!.id);
+
   this.router.navigate(['/characters']);
 }
 

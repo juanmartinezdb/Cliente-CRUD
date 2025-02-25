@@ -1,8 +1,10 @@
-<div>
-  <label for="filter">Filter by Campaign:</label>
-  <select name="filter" id="filter">
+<div class="mb-3">
+  <label for="campaignFilter">Filter by Campaign:</label>
+  <select id="campaignFilter" class="form-control" [formControl]="campaignFilter" (change)="filterByCampaign()">
+    <option value="">All Campaigns</option>
+    <option value="-1">Unassigned Characters</option>
     @for (campaign of campaigns; track $index) {
-      <option value="{{campaign.id}}">{{campaign.name}}</option>
+      <option [value]="campaign.id">{{ campaign.name }}</option>
     }
   </select>
 </div>

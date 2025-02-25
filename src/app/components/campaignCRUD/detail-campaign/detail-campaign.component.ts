@@ -36,7 +36,7 @@ loadCharacters(): void {
 }
 
   deleteCampaign(): void {
-      this.campService.remove(this.campaign!);
+      this.campService.remove(this.campaign!.id);
       this.router.navigate(['/campaigns']);
   }
 
