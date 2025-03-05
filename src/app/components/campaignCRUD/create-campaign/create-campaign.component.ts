@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Campaign } from '../../../model/campaign';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CampaignService } from '../../../service/campaign.service';
@@ -16,6 +16,7 @@ formu!: FormGroup;
 fb = inject(FormBuilder);
 campService = inject(CampaignService);
 maxID: number = 0;
+router = inject(Router);
 
 constructor () {
   this.campaign = {
@@ -41,7 +42,7 @@ ngOnInit(): void {
      active: ['',[]],
      difficulty: ['',[Validators.required]],
      place: '',
-     latitude: [36.7213, [Validators.required]],  
+     latitude: [36.7213, [Validators.required]],
      longitude: [-4.4213, [Validators.required]]
    });
 
@@ -66,6 +67,7 @@ submit(){
 console.log(this.campaign);
 
       this.campService.add(this.campaign!);
+this.router.navigate(['/campaigns'])
   } else {
     alert("formulario invalido");
 

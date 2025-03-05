@@ -53,7 +53,7 @@ submit() {
     this.character!.experience= this.formu.value.experience;
     this.character!.campaign_id= this.formu.value.campaign_id;
     this.charService.update(this.character!)
-    this.router.navigate(['/characters']);
+    this.router.navigate(['/characters',this.character!.id]);
   } else {
     alert('formulario no valido');
   }

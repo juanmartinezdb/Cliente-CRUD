@@ -1,7 +1,7 @@
 import { Campaign } from './../../../model/campaign';
 import { Component, inject, OnInit } from '@angular/core';
 import { CampaignService } from '../../../service/campaign.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CharacterService } from '../../../service/character.service';
 import { Character } from '../../../model/character';
@@ -15,6 +15,7 @@ import { MapComponent } from '../../map/map.component';
 export class EditCampaignComponent implements OnInit {
 campService = inject(CampaignService);
 charService = inject(CharacterService);
+router = inject(Router);
 route = inject(ActivatedRoute);
 fb = inject(FormBuilder);
 campaign: Campaign| null = null;
@@ -64,6 +65,7 @@ if (this.formu.valid){
   this.campaign!.longitude= this.formu.value.longitude;
 
     this.campService.update(this.campaign!);
+    this.router.navigate(['/campaigns/',this.campaign!.id]);
 } else {
   alert("formulario invalido");
 
